@@ -1,0 +1,154 @@
+:root{
+  --bg:#0f1724;
+  --card:#0b1220;
+  --accent:#7c3aed;
+  --muted:#94a3b8;
+  --glass: rgba(255,255,255,0.03);
+}
+*{box-sizing:border-box}
+html,body,#root{height:100%}
+body{
+  margin:0;
+  font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: radial-gradient(1200px 600px at 10% 10%, rgba(124,58,237,0.12), transparent),
+              linear-gradient(180deg, #020617 0%, #071029 100%);
+  color:#e6eef8;
+  -webkit-font-smoothing:antialiased;
+}
+.app-center{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:32px;
+}
+.card{
+  width:100%;
+  max-width:480px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius:16px;
+  padding:28px;
+  box-shadow: 0 10px 30px rgba(2,6,23,0.6);
+  border:1px solid rgba(255,255,255,0.03);
+  text-align:center;
+  position:relative;
+  z-index:50; /* ensure inputs are above animation layer */
+}
+.label{
+  display:block;
+  font-weight:600;
+  color:var(--muted);
+  margin-bottom:12px;
+  font-size:16px;
+}
+.input{
+  width:100%;
+  padding:12px 14px;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,0.04);
+  background:var(--glass);
+  color: #e6eef8;
+  caret-color: var(--accent);
+  font-size:16px;
+  outline:none;
+  margin-bottom:12px;
+}
+.input::placeholder{ color: rgba(255,255,255,0.6); }
+.btn{
+  display:inline-block;
+  padding:10px 18px;
+  border-radius:10px;
+  background:linear-gradient(90deg,var(--accent),#4f46e5);
+  color:white;
+  border:none;
+  font-weight:600;
+  cursor:pointer;
+  transition:transform .15s ease, box-shadow .15s ease;
+  margin-bottom:14px;
+}
+.btn:active{transform:translateY(1px)}
+.greeting{
+  margin-top:16px;
+  font-size:20px;
+  color: #dbeafe;
+  min-height:26px;
+}
+
+/* Animation root */
+.animation-root{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:40;
+  overflow:hidden;
+}
+
+/* Confetti */
+.anim-confetti{
+  position:absolute;
+  inset:0;
+}
+.confetti-piece{
+  position:absolute;
+  width:10px;
+  height:14px;
+  opacity:0.95;
+  transform-origin:center;
+  animation: confetti-fall 2200ms linear forwards, confetti-spin 1200ms linear infinite;
+}
+@keyframes confetti-fall{
+  to{ transform: translateY(110vh) rotate(360deg); opacity:1;}
+}
+@keyframes confetti-spin{
+  from{ transform: rotate(0deg) }
+  to{ transform: rotate(360deg) }
+}
+
+/* Paper streamers */
+.anim-paper{
+  position:absolute;
+  inset:0;
+}
+.paper{
+  position:absolute;
+  width:6px;
+  height:28px;
+  background:linear-gradient(90deg, rgba(255,255,255,0.9), rgba(255,255,255,0.6));
+  opacity:0.9;
+  border-radius:3px;
+  transform-origin:center;
+  animation: paper-swing 2400ms ease-in-out forwards;
+}
+@keyframes paper-swing{
+  0%{ transform: translateY(-10vh) translateX(0) rotate(0); opacity:1}
+  50%{ transform: translateY(40vh) translateX(10vw) rotate(60deg); opacity:1}
+  100%{ transform: translateY(110vh) translateX(-5vw) rotate(120deg); opacity:0}
+}
+
+/* Glowing burst */
+.anim-burst{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.burst-circle{
+  width:0;
+  height:0;
+  border-radius:50%;
+  background: radial-gradient(circle at 30% 30%, rgba(124,58,237,0.6), rgba(79,70,229,0.35));
+  animation: burst-expand 900ms ease-out forwards;
+  filter: blur(14px);
+  opacity:0.95;
+}
+@keyframes burst-expand{
+  from{ width:20px; height:20px; opacity:0.9; transform:scale(.2) }
+  to{ width:700px; height:700px; opacity:0; transform:scale(1) }
+}
+
+/* small responsive */
+@media (max-width:420px){
+  .card{ padding:20px; border-radius:12px}
+  .btn{ width:100%}
+}

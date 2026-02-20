@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Greeting App</title>
+    <link rel="stylesheet" href="src/style.css" />
+  </head>
+  <body>
+    <main class="app-center">
+      <div class="card">
+        <label class="label" for="nameInput">Enter Your Name</label>
+        <input type="text" id="nameInput" class="input" placeholder="Type your name here" aria-label="Name input" />
+        <button id="greetBtn" class="btn">Greet</button>
+        <div id="greeting" class="greeting" aria-live="polite"></div>
+      </div>
+    </main>
+
+    <div id="animation-root" class="animation-root" aria-hidden="true"></div>
+
+    <script type="module">
+      // initialize app in browser
+      import './src/app.js';
+      if (window.GreeterApp && typeof window.GreeterApp.init === 'function') {
+        window.addEventListener('DOMContentLoaded', () => window.GreeterApp.init());
+      }
+    </script>
+  </body>
+</html>

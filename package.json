@@ -1,0 +1,16 @@
+{
+  "name": "greeting-app",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "npx http-server -c-1 -p 3000",
+    "test": "jest --runInBand"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "@testing-library/dom": "^8.19.0",
+    "@testing-library/jest-dom": "^6.0.0",
+    "http-server": "^14.1.1",
+    "jest-environment-jsdom": "^29.7.0"
+  }
+}
